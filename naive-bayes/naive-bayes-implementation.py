@@ -103,17 +103,18 @@ class NaiveBayesClassifier():
 
 if __name__ == '__main__':
   # upload Iris dataset -  shape is (150, 5)
-  df = pd.read_csv("https://raw.githubusercontent.com/rmanfredini/data/main/iris.csv")
+  df = pd.read_csv("https://raw.githubusercontent.com/brunoreinaldo/ifrs-2021-ta/main/naive-bayes/data/water_potability.csv")
   # shuffle dataset with sample
   df = df.sample(frac=1, random_state=1).reset_index(drop=True)
   # df shape
   print(df.shape)
+  
   # define previsores e classes
   X, y = df.iloc[:, :-1], df.iloc[:, -1]
-
-
+  
   # # divide em treinamento e teste 0.7/0.3
-  X_train, X_test, y_train, y_test = X[:100], X[100:], y[:100], y[100:]
+  #X_train, X_test, y_train, y_test = X[:100], X[100:], y[:100], y[100:]
+  X_train, X_test, y_train, y_test = X[:2292], X[2292:], y[:2292], y[2292:]
 
   print(X_train.shape, y_train.shape)
   print(X_test.shape, y_test.shape)
@@ -126,4 +127,4 @@ if __name__ == '__main__':
 
   y_test.value_counts(normalize=True)
 
-  x.visualize(y_test, predictions, 'variedade')
+  x.visualize(y_test, predictions, 'Potability')
